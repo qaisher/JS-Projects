@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+
+<body>
+    <div class="container" style="align-items: center; align-content: center; top: 50%; left: 50%;">
+        <h1 class = "row">TO-DO LIST</h1>
+        <br><br>
+        <div class="row">
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder="Enter a task." id="box" style="width: 30vw;">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="button" value="Add" id="add-item" style="width: 10vw;" onclick="addItem()">
+                </div>
+            </form>
+        <div class="row">
+            <ul id="listItem">
+        
+            </ul>
+        </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function addItem()
+        {
+            let itemFed = document.getElementById("box");
+            let listItem = document.getElementById("listItem");
+            if(itemFed != ''){
+                let new_li = document.createElement("li");
+                new_li.appendChild(document.createTextNode(itemFed.value));
+                listItem.appendChild(new_li);
+                itemFed = "";
+
+                new_li.onclick = function(){
+                    this.parentNode.removeChild(this);
+                }
+                document.getElementById("box").value = "";
+            }
+            else
+                {
+                    alert("Please write a task.");
+                }
+            console.log(listItem);
+        }
+
+    </script>
+    
+</body>
+</html>
